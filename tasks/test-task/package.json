@@ -1,0 +1,17 @@
+{
+  "name": "test-task",
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build:types": "tsc",
+    "clean:dist": "rm -rf ./dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@repo/test-lib": "*"
+  }
+}

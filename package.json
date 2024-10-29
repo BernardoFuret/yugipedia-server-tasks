@@ -1,0 +1,36 @@
+{
+  "name": "yugipedia-server-tasks",
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "workspaces": ["libs/*", "tasks/*"],
+  "scripts": {
+    "build:types": "npm run build:types --ws --if-present",
+    "lint": "npm run lint:types && npm run lint:code",
+    "lint:types": "npm run build:types && tsc --noEmit",
+    "lint:code": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:code:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean:deps": "rm -rf ./node_modules && npm run clean:deps --ws",
+    "clean:dist": "rm -rf ./dist && npm run clean:dist --ws",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.7.6",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
