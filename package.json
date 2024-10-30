@@ -7,9 +7,8 @@
     "tasks/*"
   ],
   "scripts": {
-    "build:types": "npm run build:types --ws --if-present",
     "lint": "npm run lint:types && npm run lint:code",
-    "lint:types": "npm run build:types && tsc --noEmit",
+    "lint:types": "tsc --build",
     "lint:code": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:code:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",

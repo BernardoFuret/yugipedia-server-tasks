@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build:types": "tsc",
     "clean:dist": "rm -rf ./dist"
   },
   "imports": {
