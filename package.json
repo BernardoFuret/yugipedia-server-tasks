@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "main": "index.js",
   "type": "module",
-  "workspaces": ["libs/*", "tasks/*"],
+  "workspaces": [
+    "libs/*",
+    "tasks/*"
+  ],
   "scripts": {
     "build:types": "npm run build:types --ws --if-present",
     "lint": "npm run lint:types && npm run lint:code",

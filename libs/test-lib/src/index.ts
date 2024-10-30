@@ -1,1 +1,1 @@
-export { default as log } from '~/features/log';
+export { default as log } from '#@/features/log';
