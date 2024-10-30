@@ -1,7 +1,6 @@
 {
   "name": "@repo/test-lib",
   "version": "0.0.0",
-  "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "build:types": "tsc",
@@ -9,11 +8,6 @@
   },
   "imports": {
     "#@/*": "./src/*"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts"
-    }
   },
   "author": "",
   "license": "ISC",
