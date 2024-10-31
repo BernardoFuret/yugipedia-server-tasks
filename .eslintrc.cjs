@@ -1,4 +1,6 @@
-const ALIASED_PACKAGES = ['@'];
+const WORKSPACES = ['@libs'];
+
+const IMPORTS_SUBPATHS = ['#@'];
 
 const commonRules = {
   curly: ['error', 'all'],
@@ -49,8 +51,10 @@ module.exports = {
           ['^node:\\w'],
           // Third party packages:
           ['^@?\\w'],
-          // Aliased project packages:
-          [`^(${ALIASED_PACKAGES.join('|')})(/.*|$)`],
+          // Workspaces imports:
+          [`^${WORKSPACES.join('|')}/.*`],
+          // Imports subpaths:
+          [`^(${IMPORTS_SUBPATHS.join('|')})(/.*|$)`],
           // Parent imports, with `..` first.
           ['^\\.\\./?$', '^\\.\\.(?!/?$)'],
           // Other relative imports with nested folders imports first and same folder imports last.
