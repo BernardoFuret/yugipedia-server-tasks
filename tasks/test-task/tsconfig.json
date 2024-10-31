@@ -2,7 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
       "paths": {
-        "@repo/test-lib": ["../../libs/test-lib/src"]
+        "@libs/test-lib": ["../../libs/test-lib/src"]
       }
     },
     "references": [

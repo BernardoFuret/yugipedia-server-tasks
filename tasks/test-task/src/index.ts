@@ -1,3 +1,3 @@
-import { log } from '@repo/test-lib';
+import { log } from '@libs/test-lib';
 
 log('>>>', 'Example', 1);
