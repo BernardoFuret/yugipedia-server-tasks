@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "start": "tsx src/index.ts",
-    "clean:dist": "rm -rf ./dist"
+    "clean:dist": "rm -rf ./dist",
+    "clean:logs": "rm -rf ./logs"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@libs/logger": "*",
     "@libs/test-lib": "*"
   }
 }

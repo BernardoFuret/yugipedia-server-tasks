@@ -2,10 +2,12 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
       "paths": {
+        "@libs/logger": ["../../libs/logger/src"],
         "@libs/test-lib": ["../../libs/test-lib/src"]
       }
     },
     "references": [
+      { "path": "../../libs/logger" },
       { "path": "../../libs/test-lib" }
     ]
 }
