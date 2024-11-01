@@ -1,13 +1,17 @@
 import { inspect } from 'node:util';
 
-import type { IJsonReplacer, IMessageFormater } from './types';
+import type { IJsonReplacer, IMessageFormaterCreator } from './types';
 
-const messageFormatter: IMessageFormater = ({ timestamp, level, label, message = [] }) => {
-  const parsedMessage = message
-    .map((part) => (typeof part === 'string' ? part : inspect(part, { depth: 5, colors: true })))
-    .join(' ');
+const createMessageFormatter: IMessageFormaterCreator = ({ isColored = true } = {}) => {
+  return ({ timestamp, level, label, message = [] }) => {
+    const parsedMessage = message
+      .map((part) => {
+        return typeof part === 'string' ? part : inspect(part, { depth: 5, colors: isColored });
+      })
+      .join(' ');
 
-  return `[${timestamp}] [${label}] [${level}]: ${parsedMessage}`;
+    return `[${timestamp}] [${label}] [${level}]: ${parsedMessage}`;
+  };
 };
 
 const serializeError = (error: Error) => {
@@ -24,4 +28,4 @@ const jsonReplacer: IJsonReplacer = (_key, value) => {
   return value instanceof Error ? serializeError(value) : value;
 };
 
-export { jsonReplacer, messageFormatter };
+export { createMessageFormatter, jsonReplacer };
