@@ -1,0 +1,14 @@
+{
+  "name": "@libs/test-lib",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean:dist": "rm -rf ./dist"
+  },
+  "imports": {
+    "#@/*": "./src/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
