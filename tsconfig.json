@@ -110,6 +110,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "references": [
+    { "path": "./libs/logger" },
     { "path": "./libs/test-lib" },
     { "path": "./tasks/test-task" }
   ]

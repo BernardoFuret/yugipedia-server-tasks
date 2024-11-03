@@ -1,0 +1,17 @@
+{
+  "name": "@libs/logger",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "clean:dist": "rm -rf ./dist"
+  },
+  "imports": {
+    "#@/*": "./src/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "winston": "^3.16.0"
+  }
+}

@@ -12,8 +12,9 @@
     "lint:code": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:code:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean:deps": "rm -rf ./node_modules && npm run clean:deps --ws",
+    "clean:deps": "rm -rf ./node_modules",
     "clean:dist": "rm -rf ./dist && npm run clean:dist --ws",
+    "clean:logs": "npm run clean:logs --ws --if-present",
     "prepare": "husky"
   },
   "keywords": [],
