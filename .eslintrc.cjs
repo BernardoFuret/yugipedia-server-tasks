@@ -1,6 +1,6 @@
 const WORKSPACES = ['@libs'];
 
-const IMPORTS_SUBPATHS = ['#@'];
+const IMPORTS_SUBPATHS = ['#~'];
 
 const commonRules = {
   curly: ['error', 'all'],

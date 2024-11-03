@@ -6,7 +6,7 @@
     "clean:dist": "rm -rf ./dist"
   },
   "imports": {
-    "#@/*": "./src/*"
+    "#~/*": "./src/*"
   },
   "author": "",
   "license": "ISC",
