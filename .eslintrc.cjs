@@ -8,6 +8,17 @@ const commonRules = {
   'import/extensions': ['error', { js: 'never', ts: 'never' }],
 };
 
+const restrictedGlobalsRules = {
+  'no-restricted-globals': [
+    'error',
+    { name: '__filename' },
+    { name: '__dirname' },
+    { name: 'require' },
+    { name: 'module' },
+    { name: 'exports' },
+  ],
+};
+
 module.exports = {
   env: {
     es2022: true,
@@ -75,6 +86,10 @@ module.exports = {
       files: ['**/*.{js,cjs}'],
     },
     {
+      files: ['**/*.js'],
+      rules: { ...restrictedGlobalsRules },
+    },
+    {
       // TypeScript
       files: ['**/*.ts'],
 
@@ -111,6 +126,7 @@ module.exports = {
 
       rules: {
         ...commonRules,
+        ...restrictedGlobalsRules,
 
         '@typescript-eslint/consistent-type-imports': [
           'error',
