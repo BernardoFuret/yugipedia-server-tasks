@@ -10,9 +10,13 @@ pop_stash () {
   if [ "$has_stashed" = true ]; then
     echo "Restoring workspace state from stash."
 
+    echo ""
+
     git stash pop --index --quiet
   else
     echo "Nothing was previously stashed."
+    
+    echo ""
   fi
 }
 
