@@ -15,6 +15,7 @@
     "clean:deps": "rm -rf ./node_modules",
     "clean:dist": "rm -rf ./dist && npm run clean:dist --ws",
     "clean:logs": "npm run clean:logs --ws --if-present",
+    "todo": "git grep --line-number TODO -- \":!*.md\" \":!*.json\"",
     "prepare": "husky"
   },
   "keywords": [],
