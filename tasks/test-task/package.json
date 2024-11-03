@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "clean:dist": "rm -rf ./dist",
-    "clean:logs": "rm -rf ./logs"
+    "start": "tsx src/index.ts"
   },
   "author": "",
   "license": "ISC",

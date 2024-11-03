@@ -13,8 +13,8 @@
     "lint:code:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:deps": "rm -rf ./node_modules",
-    "clean:dist": "rm -rf ./dist && npm run clean:dist --ws",
-    "clean:logs": "npm run clean:logs --ws --if-present",
+    "clean:dist": "rm -rf {.,libs/*,tasks/*}/dist",
+    "clean:logs": "rm -rf {.,libs/*,tasks/*}/logs",
     "todo": "git grep --line-number TODO -- \":!*.md\" \":!*.json\"",
     "prepare": "husky"
   },
