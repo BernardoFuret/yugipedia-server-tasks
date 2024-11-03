@@ -13,8 +13,9 @@
     "lint:code:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean:deps": "rm -rf ./node_modules",
-    "clean:dist": "rm -rf ./dist && npm run clean:dist --ws",
-    "clean:logs": "npm run clean:logs --ws --if-present",
+    "clean:dist": "rm -rf {.,libs/*,tasks/*}/dist",
+    "clean:logs": "rm -rf {.,libs/*,tasks/*}/logs",
+    "todo": "git grep --line-number TODO -- \":!*.md\" \":!*.json\"",
     "prepare": "husky"
   },
   "keywords": [],
@@ -22,7 +23,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^22.7.6",
+    "@types/node": "^22.8.7",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -32,7 +33,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "tsx": "^4.19.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   }
 }
