@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -10,6 +10,7 @@ export default defineConfig({
 
     coverage: {
       extension: ['.ts'],
+      exclude: ['**/src/**/index.ts', ...coverageConfigDefaults.exclude],
       reporter: ['lcov', 'text-summary'],
       thresholds: {
         branches: 70,
