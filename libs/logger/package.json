@@ -2,6 +2,9 @@
   "name": "@libs/logger",
   "version": "0.0.0",
   "type": "module",
+  "scripts": {
+    "test": "vitest"
+  },
   "imports": {
     "#~/*": "./src/*"
   },
@@ -10,5 +13,8 @@
   "description": "",
   "dependencies": {
     "winston": "^3.16.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.4"
   }
 }
