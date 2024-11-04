@@ -1,25 +1,3 @@
-import { type Logform } from 'winston';
-
-interface IMessageInfo extends Logform.TransformableInfo {
-  message: unknown[];
-}
-
-interface IMessageFormater {
-  (info: IMessageInfo): string;
-}
-
-interface IMessageFormaterCreatorOptions {
-  isColored?: boolean;
-}
-
-interface IMessageFormaterCreator {
-  (options?: IMessageFormaterCreatorOptions): IMessageFormater;
-}
-
-interface IJsonReplacer {
-  (key: string, value: unknown): unknown;
-}
-
 interface IBaseLoggerMethod {
   (data: { message: unknown[]; label: string }): void;
 }
@@ -61,10 +39,8 @@ interface ILoggerConstructor {
 export type {
   IBaseLogger,
   IBaseLoggerOptions,
-  IJsonReplacer,
   ILogger,
   ILoggerConstructor,
   ILoggerConstructorOptions,
   ILoggerFactoryOptions,
-  IMessageFormaterCreator,
 };
