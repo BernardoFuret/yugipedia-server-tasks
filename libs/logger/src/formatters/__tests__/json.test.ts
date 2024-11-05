@@ -6,7 +6,7 @@ describe('JSON replacer', () => {
   it('handles non-error values', () => {
     const value = 'not an error';
 
-    expect(jsonReplacer('', value)).to.equal(value);
+    expect(jsonReplacer('', value)).toBe(value);
   });
 
   it('handles error values', () => {
@@ -14,7 +14,7 @@ describe('JSON replacer', () => {
 
     const value = new TypeError(errorMesage);
 
-    expect(jsonReplacer('', value)).to.toMatchObject({
+    expect(jsonReplacer('', value)).toMatchObject({
       error: true,
       type: 'TypeError',
       message: errorMesage,

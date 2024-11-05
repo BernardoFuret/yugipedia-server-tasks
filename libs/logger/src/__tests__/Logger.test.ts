@@ -23,7 +23,7 @@ vi.mock(import('../helpers'), () => ({
   }),
 }));
 
-describe.only('Logger', () => {
+describe('Logger', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -85,7 +85,7 @@ describe.only('Logger', () => {
     expect(internalLoggerErrorMock).not.toHaveBeenCalled();
   });
 
-  it('logs a warn message', () => {
+  it('logs an error message', () => {
     const logger = Logger.create({ srcDirname: '', label: fakeLabel });
 
     logger.error(...fakeMessageParts);
