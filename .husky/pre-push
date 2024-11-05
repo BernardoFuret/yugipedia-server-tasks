@@ -34,4 +34,4 @@ else
   has_stashed=true
 fi
 
-npm run lint
+npm run lint && npm run test:coverage
