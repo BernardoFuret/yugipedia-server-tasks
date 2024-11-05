@@ -143,5 +143,14 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'error',
       },
     },
+    {
+      files: ['**/*.test.ts'],
+      rules: {
+        '@typescript-eslint/consistent-type-imports': [
+          'error',
+          { fixStyle: 'inline-type-imports', disallowTypeAnnotations: false },
+        ],
+      },
+    },
   ],
 };
