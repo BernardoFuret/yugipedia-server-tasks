@@ -11,7 +11,10 @@
     "lint:types": "tsc --build",
     "lint:code": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:code:fix": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "clean:coverage": "rm -rf ./coverage",
     "clean:deps": "rm -rf ./node_modules",
     "clean:dist": "rm -rf {.,libs/*,tasks/*}/dist",
     "clean:logs": "rm -rf {.,libs/*,tasks/*}/logs",
@@ -24,6 +27,7 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.8.7",
+    "@vitest/coverage-v8": "^2.1.4",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -31,9 +35,11 @@
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-vitest": "^0.5.4",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
   }
 }

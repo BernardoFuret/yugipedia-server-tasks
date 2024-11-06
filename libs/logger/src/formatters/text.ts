@@ -1,6 +1,6 @@
 import { inspect } from 'node:util';
 
-import type { IJsonReplacer, IMessageFormaterCreator } from './types';
+import type { IMessageFormaterCreator } from './types';
 
 const createMessageFormatter: IMessageFormaterCreator = ({ isColored = true } = {}) => {
   return ({ timestamp, level, label, message = [] }) => {
@@ -14,18 +14,4 @@ const createMessageFormatter: IMessageFormaterCreator = ({ isColored = true } = 
   };
 };
 
-const serializeError = (error: Error) => {
-  return {
-    error: true,
-    type: error.name,
-    message: error.message,
-    stack: error.stack,
-    cause: error.cause,
-  };
-};
-
-const jsonReplacer: IJsonReplacer = (_key, value) => {
-  return value instanceof Error ? serializeError(value) : value;
-};
-
-export { createMessageFormatter, jsonReplacer };
+export { createMessageFormatter };

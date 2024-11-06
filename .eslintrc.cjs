@@ -143,5 +143,21 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'error',
       },
     },
+    {
+      files: ['**/*.test.ts'],
+      extends: ['plugin:vitest/legacy-recommended'],
+      rules: {
+        '@typescript-eslint/consistent-type-imports': [
+          'error',
+          { fixStyle: 'inline-type-imports', disallowTypeAnnotations: false },
+        ],
+
+        'vitest/no-alias-methods': 'error',
+        'vitest/no-conditional-expect': 'error',
+        'vitest/no-focused-tests': ['error', { fixable: false }],
+        'vitest/no-test-prefixes': 'error',
+        'vitest/prefer-lowercase-title': ['error', { ignore: ['describe'] }],
+      },
+    },
   ],
 };
