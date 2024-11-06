@@ -24,14 +24,6 @@ class Logger implements ILogger {
     });
   }
 
-  // TODO: check if needed
-  fork(label: string): ILogger {
-    return new Logger({
-      baseLogger: this.#baseLogger,
-      label,
-    });
-  }
-
   debug(...message: unknown[]): this {
     this.#baseLogger.debug({ message, label: this.#label });
 

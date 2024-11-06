@@ -15,7 +15,6 @@ interface IBaseLoggerOptions {
 }
 
 interface ILogger {
-  fork(label: string): ILogger;
   debug(...messageParts: unknown[]): this;
   info(...messageParts: unknown[]): this;
   warn(...messageParts: unknown[]): this;
