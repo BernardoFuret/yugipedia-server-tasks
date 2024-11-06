@@ -2,9 +2,6 @@
   "name": "@libs/logger",
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "test": "vitest"
-  },
   "imports": {
     "#~/*": "./src/*"
   },
