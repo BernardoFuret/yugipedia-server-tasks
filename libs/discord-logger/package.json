@@ -1,0 +1,14 @@
+{
+  "name": "@libs/discord-logger",
+  "version": "0.0.0",
+  "type": "module",
+  "imports": {
+    "#~/*": "./src/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.16.3"
+  }
+}
