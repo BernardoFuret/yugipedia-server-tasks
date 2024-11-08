@@ -50,8 +50,8 @@ class DiscordLogger implements IDiscordLogger {
     return this;
   }
 
-  async init(token: string): Promise<void> {
-    return this.#state.init(token);
+  async initiate(token: string): Promise<void> {
+    return this.#state.initiate(token);
   }
 
   debug(...args: unknown[]): void {
@@ -74,6 +74,10 @@ class DiscordLogger implements IDiscordLogger {
     this.#baseLogger?.error(...args);
 
     this.#state.error(...args);
+  }
+
+  async terminate(): Promise<void> {
+    return this.#state.terminate();
   }
 }
 

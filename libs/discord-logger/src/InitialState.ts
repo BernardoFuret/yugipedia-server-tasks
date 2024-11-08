@@ -8,10 +8,10 @@ class InitialState implements IDiscordLoggerState {
     this.#discordLogger = discordLogger;
   }
 
-  async init(token: string): Promise<void> {
+  async initiate(token: string): Promise<void> {
     const discordClient = this.#discordLogger.getDiscordClient();
 
-    await discordClient.start(token);
+    await discordClient.initiate(token);
 
     const channelId = this.#discordLogger.getChannelId();
 
@@ -35,6 +35,10 @@ class InitialState implements IDiscordLoggerState {
   }
 
   error(): void {
+    throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
+  }
+
+  async terminate(): Promise<void> {
     throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
   }
 }

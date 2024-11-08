@@ -15,7 +15,7 @@ class DiscordClient implements IDiscordClient {
     });
   }
 
-  async start(token: string): Promise<unknown> {
+  async initiate(token: string): Promise<unknown> {
     const onceReadyPromise = new Promise((resolve) => {
       this.#client.once('ready', resolve);
     });

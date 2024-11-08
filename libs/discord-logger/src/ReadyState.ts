@@ -47,7 +47,7 @@ class ReadyState implements IDiscordLoggerState {
     };
   }
 
-  async init(): Promise<void> {
+  async initiate(): Promise<void> {
     throw new Error(`${this.#discordLogger.constructor.name} is already initialized`);
   }
 
@@ -61,6 +61,12 @@ class ReadyState implements IDiscordLoggerState {
 
   error(...args: unknown[]): void {
     this.#channel.send(this.#createEmbedPayload(16711680, args));
+  }
+
+  async terminate(): Promise<void> {
+    const discordClient = this.#discordLogger.getDiscordClient();
+
+    return discordClient.terminate();
   }
 }
 
