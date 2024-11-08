@@ -1,6 +1,6 @@
 import { type ILogger } from '@libs/logger'; // TODO: check if dep can be removed
 
-import DiscordClient from './DisordClient';
+import DiscordClient from './DiscordClient';
 import InitialState from './InitialState';
 import {
   type IDiscordClient,
