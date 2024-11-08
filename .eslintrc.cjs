@@ -139,8 +139,9 @@ module.exports = {
 
         'dot-notation': 'off',
         '@typescript-eslint/dot-notation': 'error',
-        '@typescript-eslint/no-non-null-assertion': 'error',
         '@typescript-eslint/explicit-module-boundary-types': 'error',
+        '@typescript-eslint/no-non-null-assertion': 'error',
+        '@typescript-eslint/prefer-readonly': 'error',
       },
     },
     {
