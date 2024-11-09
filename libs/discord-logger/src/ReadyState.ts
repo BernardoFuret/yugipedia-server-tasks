@@ -1,7 +1,7 @@
 import { type APIEmbed, Colors, type SendableChannels } from 'discord.js';
 
 import {
-  type IDiscordLogger,
+  type IDiscordLoggerInternals,
   type IDiscordLoggerState,
   type IReadyStateConstructorOptions,
 } from './types';
@@ -24,12 +24,15 @@ function formatToPrint(args: unknown[]) {
 }
 
 class ReadyState implements IDiscordLoggerState {
-  readonly #discordLogger: IDiscordLogger;
+  readonly #discordLoggerInternals: IDiscordLoggerInternals;
 
   readonly #channel: SendableChannels;
 
-  constructor(discordLogger: IDiscordLogger, { channel }: IReadyStateConstructorOptions) {
-    this.#discordLogger = discordLogger;
+  constructor(
+    discordLoggerInternals: IDiscordLoggerInternals,
+    { channel }: IReadyStateConstructorOptions,
+  ) {
+    this.#discordLoggerInternals = discordLoggerInternals;
 
     this.#channel = channel;
   }
@@ -38,7 +41,7 @@ class ReadyState implements IDiscordLoggerState {
     return {
       embeds: [
         {
-          title: this.#discordLogger.getLabel(),
+          title: this.#discordLoggerInternals.getLabel(),
           description: formatToPrint(args),
           color,
           timestamp: getDateString(),
@@ -48,7 +51,7 @@ class ReadyState implements IDiscordLoggerState {
   }
 
   async initiate(): Promise<void> {
-    throw new Error(`${this.#discordLogger.constructor.name} is already initialized`);
+    throw new Error(`${this.#discordLoggerInternals.constructor.name} is already initialized`);
   }
 
   info(...args: unknown[]): void {
@@ -64,7 +67,7 @@ class ReadyState implements IDiscordLoggerState {
   }
 
   async terminate(): Promise<void> {
-    const discordClient = this.#discordLogger.getDiscordClient();
+    const discordClient = this.#discordLoggerInternals.getDiscordClient();
 
     return discordClient.terminate();
   }

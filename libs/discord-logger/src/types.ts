@@ -20,11 +20,20 @@ interface IReadyStateConstructorOptions {
   channel: SendableChannels;
 }
 
-interface IDiscordLogger {
+interface IDiscordLoggerInternals {
   getChannelId(): string;
   getDiscordClient(): IDiscordClient;
   getLabel(): string;
   setState(state: IDiscordLoggerState): this;
+  getState(): IDiscordLoggerState;
+}
+
+interface IDiscordLoggerInternalsConstructorOptions {
+  label: string;
+  channelId: string;
+}
+
+interface IDiscordLogger {
   initiate(token: string): Promise<void>;
   debug(...messageParts: unknown[]): void;
   info(...messageParts: unknown[]): void;
@@ -33,16 +42,16 @@ interface IDiscordLogger {
   terminate(): Promise<void>;
 }
 
-interface IDiscordLoggerConstructorOptions {
+interface IDiscordLoggerConstructorOptions extends IDiscordLoggerInternalsConstructorOptions {
   baseLogger?: ILogger;
-  label: string;
-  channelId: string;
 }
 
 export type {
   IDiscordClient,
   IDiscordLogger,
   IDiscordLoggerConstructorOptions,
+  IDiscordLoggerInternals,
+  IDiscordLoggerInternalsConstructorOptions,
   IDiscordLoggerState,
   IReadyStateConstructorOptions,
 };

@@ -1,19 +1,19 @@
 import ReadyState from './ReadyState';
-import { type IDiscordLogger, type IDiscordLoggerState } from './types';
+import { type IDiscordLoggerInternals, type IDiscordLoggerState } from './types';
 
 class InitialState implements IDiscordLoggerState {
-  readonly #discordLogger: IDiscordLogger;
+  readonly #discordLoggerInternals: IDiscordLoggerInternals;
 
-  constructor(discordLogger: IDiscordLogger) {
-    this.#discordLogger = discordLogger;
+  constructor(discordLoggerInternals: IDiscordLoggerInternals) {
+    this.#discordLoggerInternals = discordLoggerInternals;
   }
 
   async initiate(token: string): Promise<void> {
-    const discordClient = this.#discordLogger.getDiscordClient();
+    const discordClient = this.#discordLoggerInternals.getDiscordClient();
 
     await discordClient.initiate(token);
 
-    const channelId = this.#discordLogger.getChannelId();
+    const channelId = this.#discordLoggerInternals.getChannelId();
 
     const channel = await discordClient.getChannelById(channelId);
 
@@ -23,23 +23,25 @@ class InitialState implements IDiscordLoggerState {
       });
     }
 
-    this.#discordLogger.setState(new ReadyState(this.#discordLogger, { channel }));
+    this.#discordLoggerInternals.setState(
+      new ReadyState(this.#discordLoggerInternals, { channel }),
+    );
   }
 
   info(): void {
-    throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
+    throw new Error(`${this.#discordLoggerInternals.constructor.name} is not initialized yet`);
   }
 
   warn(): void {
-    throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
+    throw new Error(`${this.#discordLoggerInternals.constructor.name} is not initialized yet`);
   }
 
   error(): void {
-    throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
+    throw new Error(`${this.#discordLoggerInternals.constructor.name} is not initialized yet`);
   }
 
   async terminate(): Promise<void> {
-    throw new Error(`${this.#discordLogger.constructor.name} is not initialized yet`);
+    throw new Error(`${this.#discordLoggerInternals.constructor.name} is not initialized yet`);
   }
 }
 

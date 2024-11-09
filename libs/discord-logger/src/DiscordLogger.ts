@@ -1,53 +1,26 @@
 import { type ILogger } from '@libs/logger'; // TODO: check if dep can be removed
 
-import DiscordClient from './DiscordClient';
-import InitialState from './InitialState';
+import DiscordLoggerInternals from './DiscordLoggerInternals';
 import {
-  type IDiscordClient,
   type IDiscordLogger,
   type IDiscordLoggerConstructorOptions,
+  type IDiscordLoggerInternals,
   type IDiscordLoggerState,
 } from './types';
 
 class DiscordLogger implements IDiscordLogger {
   readonly #baseLogger?: ILogger;
 
-  readonly #label: string;
-
-  readonly #channelId: string;
-
-  readonly #discordClient: IDiscordClient;
-
-  #state: IDiscordLoggerState;
+  readonly #internals: IDiscordLoggerInternals;
 
   constructor({ baseLogger, label, channelId }: IDiscordLoggerConstructorOptions) {
     this.#baseLogger = baseLogger; // TODO: #logger ???
 
-    this.#label = label;
-
-    this.#channelId = channelId;
-
-    this.#discordClient = new DiscordClient();
-
-    this.#state = new InitialState(this);
+    this.#internals = new DiscordLoggerInternals({ label, channelId });
   }
 
-  getChannelId(): string {
-    return this.#channelId;
-  }
-
-  getDiscordClient(): IDiscordClient {
-    return this.#discordClient;
-  }
-
-  getLabel(): string {
-    return this.#label;
-  }
-
-  setState(state: IDiscordLoggerState): this {
-    this.#state = state;
-
-    return this;
+  get #state(): IDiscordLoggerState {
+    return this.#internals.getState();
   }
 
   async initiate(token: string): Promise<void> {
