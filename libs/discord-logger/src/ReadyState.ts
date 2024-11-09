@@ -1,4 +1,4 @@
-import { type APIEmbed, type SendableChannels } from 'discord.js';
+import { type APIEmbed, Colors, type SendableChannels } from 'discord.js';
 
 import {
   type IDiscordLogger,
@@ -16,7 +16,7 @@ function formatToPrint(args: unknown[]) {
       }
 
       return arg instanceof Error
-        ? `${arg}\n${'```\n'}${arg.stack}${'```'}`
+        ? `${arg}\n${'```\n'}${arg.message}\n\n${arg.cause || ''}${'```'}`
         : `${'```JSON\n'}${JSON.stringify(arg)}${'```'}`;
     })
     .join(' ')
@@ -52,15 +52,15 @@ class ReadyState implements IDiscordLoggerState {
   }
 
   info(...args: unknown[]): void {
-    this.#channel.send(this.#createEmbedPayload(1276176, args)); // TODO: use Colors
+    this.#channel.send(this.#createEmbedPayload(Colors.DarkGreen, args));
   }
 
   warn(...args: unknown[]): void {
-    this.#channel.send(this.#createEmbedPayload(13930502, args));
+    this.#channel.send(this.#createEmbedPayload(Colors.DarkGold, args));
   }
 
   error(...args: unknown[]): void {
-    this.#channel.send(this.#createEmbedPayload(16711680, args));
+    this.#channel.send(this.#createEmbedPayload(Colors.DarkRed, args));
   }
 
   async terminate(): Promise<void> {
