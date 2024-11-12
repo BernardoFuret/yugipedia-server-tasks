@@ -1,12 +1,10 @@
-import { type APIEmbed, Colors, type SendableChannels } from 'discord.js';
+import { type APIEmbed, Colors, EmbedBuilder, type SendableChannels } from 'discord.js';
 
 import {
   type IDiscordLoggerInternals,
   type IDiscordLoggerState,
   type IReadyStateConstructorOptions,
 } from './types';
-
-const getDateString = () => new Date().toISOString();
 
 function formatToPrint(args: unknown[]) {
   return args
@@ -40,12 +38,12 @@ class ReadyState implements IDiscordLoggerState {
   #createEmbedPayload(color: number, args: unknown[]): { embeds: [APIEmbed] } {
     return {
       embeds: [
-        {
-          title: this.#discordLoggerInternals.getLabel(),
-          description: formatToPrint(args),
-          color,
-          timestamp: getDateString(),
-        },
+        new EmbedBuilder()
+          .setColor(color)
+          .setTitle(this.#discordLoggerInternals.getLabel())
+          .setDescription(formatToPrint(args))
+          .setTimestamp()
+          .toJSON(),
       ],
     };
   }
