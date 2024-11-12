@@ -1,3 +1,5 @@
+import { inspect } from 'node:util';
+
 import { type APIEmbed, Colors, EmbedBuilder, type SendableChannels } from 'discord.js';
 
 import {
@@ -6,20 +8,21 @@ import {
   type IReadyStateConstructorOptions,
 } from './types';
 
-function formatToPrint(args: unknown[]) {
+// TODO: escape triple backtick?
+const formatToPrint = (args: unknown[]) => {
   return args
     .map((arg) => {
-      if (typeof arg === 'string') {
-        return arg;
-      }
-
-      return arg instanceof Error
-        ? `${arg}\n${'```\n'}${arg.message}\n\n${arg.cause || ''}${'```'}`
-        : `${'```JSON\n'}${JSON.stringify(arg)}${'```'}`;
+      return typeof arg === 'string' ? arg : inspect(arg, { depth: 5, colors: false });
     })
     .join(' ')
     .substring(0, 2000);
-}
+};
+
+const wrapMessageData = (message: string) => `
+\`\`\`json
+${message}
+\`\`\`
+  `;
 
 class ReadyState implements IDiscordLoggerState {
   readonly #discordLoggerInternals: IDiscordLoggerInternals;
@@ -41,7 +44,7 @@ class ReadyState implements IDiscordLoggerState {
         new EmbedBuilder()
           .setColor(color)
           .setTitle(this.#discordLoggerInternals.getLabel())
-          .setDescription(formatToPrint(args))
+          .setDescription(wrapMessageData(formatToPrint(args)))
           .setTimestamp()
           .toJSON(),
       ],
