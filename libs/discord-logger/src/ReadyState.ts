@@ -1,28 +1,11 @@
-import { inspect } from 'node:util';
-
 import { type APIEmbed, Colors, EmbedBuilder, type SendableChannels } from 'discord.js';
 
+import { formatToPrint, wrapMessageData } from './helpers';
 import {
   type IDiscordLoggerInternals,
   type IDiscordLoggerState,
   type IReadyStateConstructorOptions,
 } from './types';
-
-// TODO: escape triple backtick?
-const formatToPrint = (args: unknown[]) => {
-  return args
-    .map((arg) => {
-      return typeof arg === 'string' ? arg : inspect(arg, { depth: 5, colors: false });
-    })
-    .join(' ')
-    .substring(0, 2000);
-};
-
-const wrapMessageData = (message: string) => `
-\`\`\`json
-${message}
-\`\`\`
-  `;
 
 class ReadyState implements IDiscordLoggerState {
   readonly #discordLoggerInternals: IDiscordLoggerInternals;
