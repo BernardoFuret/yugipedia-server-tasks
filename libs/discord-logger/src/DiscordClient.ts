@@ -7,11 +7,7 @@ class DiscordClient implements IDiscordClient {
 
   constructor() {
     this.#client = new Client({
-      intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        // TODO check if needed GatewayIntentBits.MessageContent, // enable for message content access
-      ],
+      intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
     });
   }
 
