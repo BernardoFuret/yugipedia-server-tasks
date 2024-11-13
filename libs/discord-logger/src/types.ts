@@ -1,6 +1,11 @@
 import { type Channel, type SendableChannels } from 'discord.js';
 
-import { type ILogger } from '@libs/logger'; // TODO
+interface IBaseLogger {
+  debug(...messageParts: unknown[]): void;
+  info(...messageParts: unknown[]): void;
+  warn(...messageParts: unknown[]): void;
+  error(...messageParts: unknown[]): void;
+}
 
 interface IDiscordClient {
   initiate(token: string): Promise<unknown>;
@@ -43,10 +48,11 @@ interface IDiscordLogger {
 }
 
 interface IDiscordLoggerConstructorOptions extends IDiscordLoggerInternalsConstructorOptions {
-  baseLogger?: ILogger;
+  baseLogger?: IBaseLogger;
 }
 
 export type {
+  IBaseLogger,
   IDiscordClient,
   IDiscordLogger,
   IDiscordLoggerConstructorOptions,

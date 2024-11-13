@@ -9,7 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@libs/logger": "*",
     "discord.js": "^14.16.3"
   }
 }

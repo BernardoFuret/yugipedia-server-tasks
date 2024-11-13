@@ -1,7 +1,6 @@
-import { type ILogger } from '@libs/logger'; // TODO: check if dep can be removed
-
 import DiscordLoggerInternals from './DiscordLoggerInternals';
 import {
+  type IBaseLogger,
   type IDiscordLogger,
   type IDiscordLoggerConstructorOptions,
   type IDiscordLoggerInternals,
@@ -9,12 +8,12 @@ import {
 } from './types';
 
 class DiscordLogger implements IDiscordLogger {
-  readonly #baseLogger?: ILogger;
+  readonly #baseLogger?: IBaseLogger;
 
   readonly #internals: IDiscordLoggerInternals;
 
   constructor({ baseLogger, label, channelId }: IDiscordLoggerConstructorOptions) {
-    this.#baseLogger = baseLogger; // TODO: #logger ???
+    this.#baseLogger = baseLogger;
 
     this.#internals = new DiscordLoggerInternals({ label, channelId });
   }
