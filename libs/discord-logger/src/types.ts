@@ -1,5 +1,9 @@
 import { type Channel, type SendableChannels } from 'discord.js';
 
+type IGenericChannel = Pick<Channel, 'isSendable'>;
+
+interface ISendableChannel extends IGenericChannel, Pick<SendableChannels, 'send'> {}
+
 interface IBaseLogger {
   debug(...messageParts: unknown[]): void;
   info(...messageParts: unknown[]): void;
@@ -9,7 +13,7 @@ interface IBaseLogger {
 
 interface IDiscordClient {
   initiate(token: string): Promise<unknown>;
-  getChannelById(channelId: string): Promise<Channel>;
+  getChannelById(channelId: string): Promise<IGenericChannel>;
   terminate(): Promise<void>;
 }
 
@@ -22,7 +26,7 @@ interface IDiscordLoggerState {
 }
 
 interface IReadyStateConstructorOptions {
-  channel: SendableChannels;
+  channel: ISendableChannel;
 }
 
 interface IDiscordLoggerInternals {
@@ -60,4 +64,5 @@ export type {
   IDiscordLoggerInternalsConstructorOptions,
   IDiscordLoggerState,
   IReadyStateConstructorOptions,
+  ISendableChannel,
 };

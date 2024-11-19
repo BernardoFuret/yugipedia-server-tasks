@@ -1,16 +1,17 @@
-import { type APIEmbed, Colors, EmbedBuilder, type SendableChannels } from 'discord.js';
+import { type APIEmbed, Colors, EmbedBuilder } from 'discord.js';
 
 import { formatToPrint, wrapMessageData } from './helpers';
 import {
   type IDiscordLoggerInternals,
   type IDiscordLoggerState,
   type IReadyStateConstructorOptions,
+  type ISendableChannel,
 } from './types';
 
 class ReadyState implements IDiscordLoggerState {
   readonly #discordLoggerInternals: IDiscordLoggerInternals;
 
-  readonly #channel: SendableChannels;
+  readonly #channel: ISendableChannel;
 
   constructor(
     discordLoggerInternals: IDiscordLoggerInternals,
