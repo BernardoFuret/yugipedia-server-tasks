@@ -12,6 +12,8 @@ const fakeChannelId = 'fakeChannelId';
 
 const fakeToken = 'fakeToken';
 
+const fakeArgs = ['fake', 'args'];
+
 describe('DiscordLogger', () => {
   afterAll(() => {
     vi.restoreAllMocks();
@@ -112,8 +114,6 @@ describe('DiscordLogger', () => {
     expect(spyOnClientPrototypeOnce).toHaveBeenCalled();
 
     expect(spyOnChannelManagerPrototypeFetch).toHaveBeenCalled();
-
-    const fakeArgs = ['fake', 'args'];
 
     discordLogger.debug(...fakeArgs);
 
@@ -306,8 +306,6 @@ describe('DiscordLogger', () => {
       label: fakeLabel,
       channelId: fakeChannelId,
     });
-
-    const fakeArgs = ['fake', 'args'];
 
     expect(() => discordLogger.info(...fakeArgs)).toThrow('is not initialized yet');
 

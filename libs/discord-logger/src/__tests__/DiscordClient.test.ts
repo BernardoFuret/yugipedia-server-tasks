@@ -63,7 +63,7 @@ describe('DiscordClient', () => {
 
     const discordClient = new DiscordClient();
 
-    await expect(() => discordClient.getChannelById(fakeChannelId)).rejects.toThrow();
+    await expect(() => discordClient.getChannelById(fakeChannelId)).rejects.toThrow('not found');
 
     expect(spyOnChannelManagerPrototypeFetch).toHaveBeenCalledTimes(1);
 

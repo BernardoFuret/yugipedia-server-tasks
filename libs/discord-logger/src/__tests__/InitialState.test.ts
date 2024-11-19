@@ -73,7 +73,7 @@ describe('InitialState', () => {
 
     const initialState = new InitialState(fakeDiscorLoggerInternals);
 
-    await expect(() => initialState.initiate('fakeToken')).rejects.toThrow();
+    await expect(() => initialState.initiate('fakeToken')).rejects.toThrow('is not sendable');
 
     expect(mockedDiscordLoggerInternalsPrototypeSetState).not.toHaveBeenCalled();
 
@@ -89,7 +89,7 @@ describe('InitialState', () => {
       getState: vi.fn(),
     });
 
-    expect(() => initialState.info()).toThrow();
+    expect(() => initialState.info()).toThrow('is not initialized yet');
   });
 
   it('throws if it tries to log a warn message', () => {
@@ -101,7 +101,7 @@ describe('InitialState', () => {
       getState: vi.fn(),
     });
 
-    expect(() => initialState.warn()).toThrow();
+    expect(() => initialState.warn()).toThrow('is not initialized yet');
   });
 
   it('throws if it tries to log an error message', () => {
@@ -113,7 +113,7 @@ describe('InitialState', () => {
       getState: vi.fn(),
     });
 
-    expect(() => initialState.error()).toThrow();
+    expect(() => initialState.error()).toThrow('is not initialized yet');
   });
 
   it('throws if it tries to terminate', async () => {
@@ -125,6 +125,6 @@ describe('InitialState', () => {
       getState: vi.fn(),
     });
 
-    await expect(() => initialState.terminate()).rejects.toThrow();
+    await expect(() => initialState.terminate()).rejects.toThrow('is not initialized yet');
   });
 });
