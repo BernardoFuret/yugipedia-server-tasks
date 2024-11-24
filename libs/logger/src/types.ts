@@ -10,8 +10,8 @@ interface IBaseLogger {
 }
 
 interface IBaseLoggerOptions {
-  srcDirname: string;
   isDebug?: boolean;
+  srcDirname: string;
 }
 
 interface ILogger {
@@ -26,8 +26,7 @@ interface ILoggerConstructorOptions {
   label: string;
 }
 
-interface ILoggerFactoryOptions {
-  srcDirname: string;
+interface ILoggerFactoryOptions extends IBaseLoggerOptions {
   label: string;
 }
 
