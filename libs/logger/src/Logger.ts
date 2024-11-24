@@ -17,9 +17,9 @@ class Logger implements ILogger {
     this.#label = label;
   }
 
-  static create({ srcDirname, label }: ILoggerFactoryOptions): ILogger {
+  static create({ isDebug, srcDirname, label }: ILoggerFactoryOptions): ILogger {
     return new Logger({
-      baseLogger: createBaseLogger({ srcDirname }),
+      baseLogger: createBaseLogger({ isDebug, srcDirname }),
       label,
     });
   }

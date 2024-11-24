@@ -11,7 +11,7 @@ import config from './config';
 
 const srcDirname = dirname(fileURLToPath(import.meta.url));
 
-const logger = Logger.create({ srcDirname, label: 'test-lib' });
+const logger = Logger.create({ isDebug: config.isDebug, srcDirname, label: 'test-lib' });
 
 const discordLogger = new DiscordLogger({
   baseLogger: logger,
