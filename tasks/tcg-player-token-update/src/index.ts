@@ -13,13 +13,15 @@ const srcDirname = dirname(fileURLToPath(import.meta.url));
 
 const logger = Logger.create({ isDebug: config.isDebug, srcDirname, label: loggerLabel });
 
+logger.debug('Debug mode is on');
+
 const discordLogger = new DiscordLogger({
   baseLogger: logger,
   label: loggerLabel,
-  channelId: config.discordLogChannelId,
+  channelId: config.discord.logChannelId,
 });
 
-await discordLogger.initiate(config.discordBotToken);
+await discordLogger.initiate(config.discord.botToken);
 
 discordLogger.info('test', loggerLabel);
 

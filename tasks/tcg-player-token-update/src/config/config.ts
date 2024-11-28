@@ -10,8 +10,20 @@ if (error) {
 const config: IConfig = {
   isDebug: data.DEBUG,
 
-  discordBotToken: data.DISCORD_BOT_TOKEN,
-  discordLogChannelId: data.DISCORD_LOG_CHANNEL_ID,
+  discord: {
+    botToken: data.DISCORD_BOT_TOKEN,
+    logChannelId: data.DISCORD_LOG_CHANNEL_ID,
+  },
+
+  tcgplayer: {
+    apiUrl: data.TCGPLAYER_API_URL,
+    clientId: data.TCGPLAYER_CLIENT_ID,
+    clientSecret: data.TCGPLAYER_CLIENT_SECRET,
+  },
+
+  tcgplayerExtension: {
+    configFilePath: data.TCGPLAYER_EXTENSION_CONFIG_FILE_PATH,
+  },
 } as const;
 
 export default config;
