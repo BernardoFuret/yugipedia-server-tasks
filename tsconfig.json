@@ -117,6 +117,7 @@
     { "path": "./libs/logger" },
     { "path": "./libs/discord-logger" },
     { "path": "./libs/test-lib" },
+    { "path": "./tasks/tcg-player-token-update" },
     { "path": "./tasks/test-task" }
   ]
 }

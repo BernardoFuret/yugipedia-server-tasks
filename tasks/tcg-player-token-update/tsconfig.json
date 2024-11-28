@@ -1,0 +1,13 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "paths": {
+        "@libs/logger": ["../../libs/logger/src"],
+        "@libs/discord-logger": ["../../libs/discord-logger/src"]
+      }
+    },
+    "references": [
+      { "path": "../../libs/logger" },
+      { "path": "../../libs/discord-logger" }
+    ]
+}
