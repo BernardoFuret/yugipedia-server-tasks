@@ -18,7 +18,13 @@ class TcgplayerClient implements ITcgplayerClient {
       }),
     });
 
-    const { access_token: accessToken } = await response.json();
+    const jsonData = await response.json();
+
+    const { access_token: accessToken } = jsonData;
+
+    if (!accessToken) {
+      throw new Error('Failed to fetch the bearer token', { cause: jsonData });
+    }
 
     return {
       data: { accessToken },
