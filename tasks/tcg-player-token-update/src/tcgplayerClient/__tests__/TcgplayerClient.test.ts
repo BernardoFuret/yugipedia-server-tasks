@@ -31,4 +31,23 @@ describe('TcgplayerClient', () => {
 
     spyOnfetch.mockRestore();
   });
+
+  it('throws an erro if it failed to fetch the access token', async () => {
+    const spyOnfetch = vi
+      .spyOn(global, 'fetch')
+      .mockResolvedValue(new Response(JSON.stringify({})));
+
+    const tcgplayerClient = new TcgplayerClient('');
+
+    const resultPromise = tcgplayerClient.fetchToken({
+      clientId: 'fakeClientId',
+      clientSecret: 'fakeClientSecret',
+    });
+
+    await expect(resultPromise).rejects.toThrow(Error);
+
+    expect(spyOnfetch).toHaveBeenCalledOnce();
+
+    spyOnfetch.mockRestore();
+  });
 });
