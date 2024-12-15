@@ -14,6 +14,14 @@ const config: IConfig = {
     botToken: data.DISCORD_BOT_TOKEN,
     logChannelId: data.DISCORD_LOG_CHANNEL_ID,
   },
+
+  yugipedia: {
+    apiUrl: data.YUGIPEDIA_API_URL,
+  },
+
+  gizmekUkaTargetsExtension: {
+    dataFilePath: data.GIZMEK_UKA_TARGETS_EXTENSION_DATA_FILE_PATH,
+  },
 } as const;
 
 export default config;
