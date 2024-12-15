@@ -8,6 +8,7 @@ import Logger from '@libs/logger';
 
 import config from './config';
 import { loggerLabel } from './constants';
+import task from './task';
 
 const srcDirname = dirname(fileURLToPath(import.meta.url));
 
@@ -24,7 +25,7 @@ const discordLogger = new DiscordLogger({
 await discordLogger.initiate(config.discord.botToken);
 
 try {
-  discordLogger.info('TODO'); // TODO
+  await task(discordLogger);
 } catch (error) {
   discordLogger.error('Unexpected error:', error);
 } finally {
