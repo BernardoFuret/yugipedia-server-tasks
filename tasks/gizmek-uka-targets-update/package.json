@@ -1,0 +1,17 @@
+{
+  "name": "gizmek-uka-targets-update",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@libs/discord-logger": "*",
+    "@libs/logger": "*",
+    "dotenv": "^16.4.7",
+    "zod": "^3.23.8"
+  }
+}
