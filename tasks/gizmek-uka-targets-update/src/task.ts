@@ -5,6 +5,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { type IDiscordLogger } from '@libs/discord-logger';
 
 import config from './config';
+import { SummoningCategories } from './constants';
 import { type IGizmekUkaTargetEntry } from './types';
 import YugipediaClient, { type ISmwGizmekUkaTarget } from './yugipediaClient';
 
@@ -24,7 +25,7 @@ const computeGizmekUkaTargets = (smwResult: ISmwGizmekUkaTarget): IGizmekUkaTarg
         type: printouts.Type[0]?.fulltext,
         level: printouts['Stars string'][0],
         ssFromDeck: !printouts.Summoning.find(
-          (o) => o.fulltext === 'Cannot be Special Summoned from the Deck',
+          (o) => o.fulltext === SummoningCategories.NO_SPECIAL_SUMMON_FROM_DECK,
         ),
         isNormalMonster: !!printouts['Primary type'].find((o) => o.fulltext.match(/Normal/)),
       });
